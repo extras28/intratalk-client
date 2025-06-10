@@ -1,10 +1,9 @@
-import { Formik, Form } from "formik";
-import { Button, Form as BootstrapForm, Alert } from "react-bootstrap";
+import { Form, Formik } from "formik";
+import { Alert, Form as BootstrapForm, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerSchema } from "../../../forms/loginSchema";
-import { registerUser } from "../authAPI";
-import { loginStart, loginSuccess, loginFailure } from "../authSlice";
+import { loginFailure, loginStart, loginSuccess } from "../authSlice";
 
 const RegisterForm = () => {
     const dispatch = useDispatch();

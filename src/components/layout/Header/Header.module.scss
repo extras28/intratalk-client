@@ -1,0 +1,15 @@
+// @use "../../../../assets/style/variables" as *;
+@use "../../../assets/style/variables" as *;
+
+.headerResponsive {
+    height: $header-height-xs;
+    @media (min-width: 576px) {
+        height: $header-height-sm;
+    }
+    @media (min-width: 768px) {
+        height: $header-height-md;
+    }
+    @media (min-width: 992px) {
+        height: $header-height-lg;
+    }
+}

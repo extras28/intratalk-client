@@ -1,0 +1,55 @@
+@use "../Header/Header.module.scss" as header;
+@use "../../../assets/style/variables" as *;
+
+.sidebar {
+    width: $sidebar-width;
+    transition: width $sidebar-transition;
+    &.collapsed {
+        width: $sidebar-width-collapsed;
+    }
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    height: $header-height-xs;
+    @media (min-width: 576px) {
+        height: $header-height-sm;
+    }
+    @media (min-width: 768px) {
+        height: $header-height-md;
+    }
+    @media (min-width: 992px) {
+        height: $header-height-lg;
+    }
+    &.collapsed {
+        justify-content: center;
+    }
+    &.expanded {
+        justify-content: space-between;
+    }
+}
+
+.tab {
+    min-height: $tab-min-height;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.375rem;
+    transition: background $sidebar-transition, color $sidebar-transition;
+    justify-content: flex-start;
+    &.collapsed {
+        justify-content: center;
+    }
+    &.selected {
+        background: var(--bs-primary);
+        color: var(--bs-light);
+    }
+    &:not(.selected):hover {
+        background: #e9ecef;
+    }
+}

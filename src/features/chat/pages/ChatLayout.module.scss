@@ -1,0 +1,43 @@
+@import "../../../assets/style/_variables.scss";
+
+.chatLayout {
+    min-height: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+    overflow: hidden;
+    transition: background 0.2s, border 0.2s;
+    background: #f7fafd;
+    border: 2px solid #e0e3eb;
+}
+
+[data-bs-theme="dark"] .chatLayout {
+    background: #23262f;
+    border: 2px solid #353945;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.32);
+}
+
+.chatSidebar {
+    width: 280px;
+    transition: background 0.2s;
+}
+
+.chatBox {
+    transition: background 0.2s;
+}
+
+// .chatSidebar ul li {
+//     transition: background 0.15s, color 0.15s;
+//     background: #f4f6fb;
+//     color: #222;
+// }
+
+// .chatSidebar ul li:hover {
+//     background: #e0e7ef !important;
+//     color: #212529 !important;
+// }
+
+// // Nếu đang ở dark mode
+// [data-bs-theme="dark"] .chatSidebar ul li:hover {
+//     background: #353945 !important;
+//     color: #f4f4f4 !important;
+// }

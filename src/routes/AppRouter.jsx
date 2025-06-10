@@ -7,45 +7,51 @@ import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import ChatLayout from "../features/chat/pages/ChatLayout";
 
-const router = createBrowserRouter([
-    {
-        element: <PrivateRoute />,
-        children: [
-            {
-                path: "/",
-                element: <MainLayout />,
-                children: [
-                    {
-                        index: true,
-                        element: <HomePage />,
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        element: <PublicRoute />,
-        children: [
-            {
-                element: <AuthLayout />,
-                children: [
-                    {
-                        path: "login",
-                        element: <LoginPage />,
-                    },
-                    {
-                        path: "register",
-                        element: <RegisterPage />,
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        path: "*",
-        element: <NotFoundPage />,
-    },
-]);
+const createAppRouter = (toggleTheme, theme) =>
+    createBrowserRouter([
+        {
+            element: <PrivateRoute />,
+            children: [
+                {
+                    path: "/",
+                    element: <MainLayout toggleTheme={toggleTheme} theme={theme} />,
+                    children: [
+                        {
+                            index: true,
+                            element: <HomePage />,
+                        },
+                        {
+                            path: "chat",
+                            element: <ChatLayout />,
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            element: <PublicRoute />,
+            children: [
+                {
+                    element: <AuthLayout toggleTheme={toggleTheme} theme={theme} />,
+                    children: [
+                        {
+                            path: "login",
+                            element: <LoginPage />,
+                        },
+                        {
+                            path: "register",
+                            element: <RegisterPage />,
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            path: "*",
+            element: <NotFoundPage />,
+        },
+    ]);
 
-export default router;
+export default createAppRouter;

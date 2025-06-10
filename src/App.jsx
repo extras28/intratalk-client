@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { authApi } from "./api";
-import { loginSuccess, logout } from "./features/auth/authSlice";
-import { RouterProvider } from "react-router-dom";
-import router from "./routes/AppRouter";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { RouterProvider } from "react-router-dom";
+import { authApi } from "./api";
 import "./App.css";
 import "./assets/fontawesomes/version_6_pro/css/all.min.css";
+import { loginSuccess, logout } from "./features/auth/authSlice";
+import createAppRouter from "./routes/AppRouter";
 
 function App() {
     const dispatch = useDispatch();
@@ -30,21 +30,12 @@ function App() {
     }, [dispatch]);
 
     const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+    const router = createAppRouter(toggleTheme, theme);
 
     return (
-        <>
-            <button
-                onClick={toggleTheme}
-                className="btn btn-link position-fixed top-0 end-0 m-3 fs-4"
-                aria-label="Toggle theme"
-                style={{ zIndex: 9999 }}
-            >
-                <i className={theme === "light" ? "fa-regular fa-moon" : "fa-regular fa-sun"}></i>
-            </button>
-            <div className="bg-body text-body min-vh-100">
-                <RouterProvider router={router} />
-            </div>
-        </>
+        <div className="bg-body text-body min-vh-100">
+            <RouterProvider router={router} />
+        </div>
     );
 }
 
