@@ -17,6 +17,14 @@ const Sidebar = ({ collapsed, setCollapsed, currentPath }) => (
         className={`bg-body-tertiary border-end d-flex flex-column align-items-center px-2 position-relative ${
             styles.sidebar
         } ${collapsed ? styles.collapsed : ""}`}
+        style={{
+            position: "sticky",
+            top: 0,
+            height: "100vh",
+            minHeight: 0,
+            flexShrink: 0,
+            overflow: "visible",
+        }}
     >
         <div className={`${styles.sidebarHeader} ${collapsed ? styles.collapsed : styles.expanded}`}>
             {/* Logo */}
