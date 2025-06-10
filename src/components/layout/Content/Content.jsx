@@ -6,7 +6,7 @@ const Content = () => {
     const path = window.location.pathname;
     if (path.startsWith("/chat")) {
         return (
-            <main className="flex-grow-1 p-4 overflow-auto bg-body">
+            <main className="flex-grow-1 overflow-auto bg-body">
                 <ChatLayout />
             </main>
         );

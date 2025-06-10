@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../pages/ChatLayout.module.scss";
+import { useSelector } from "react-redux";
 
 const dummyMessages = [
     { id: 1, sender: "Alice", content: "Hi there!" },
@@ -10,6 +11,7 @@ const dummyMessages = [
 const ChatBox = ({ selectedChatId }) => {
     const [messages, setMessages] = useState(dummyMessages);
     const [input, setInput] = useState("");
+    const theme = useSelector((state) => state.app.theme);
 
     const handleSend = (e) => {
         e.preventDefault();
@@ -27,10 +29,10 @@ const ChatBox = ({ selectedChatId }) => {
                             className={
                                 "d-inline-block p-2 rounded " +
                                 (msg.sender === "Me"
-                                    ? localStorage.getItem("theme") === "dark"
+                                    ? theme === "dark"
                                         ? "bg-primary text-white"
                                         : "bg-primary text-white"
-                                    : localStorage.getItem("theme") === "dark"
+                                    : theme === "dark"
                                     ? "bg-secondary text-dark"
                                     : "bg-light text-dark")
                             }

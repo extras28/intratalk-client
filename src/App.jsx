@@ -1,20 +1,20 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 import { authApi } from "./api";
 import "./App.css";
 import "./assets/fontawesomes/version_6_pro/css/all.min.css";
 import { loginSuccess, logout } from "./features/auth/authSlice";
+import { setTheme } from "./features/app/appSlice";
 import createAppRouter from "./routes/AppRouter";
 
 function App() {
     const dispatch = useDispatch();
-    const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+    const theme = useSelector((state) => state.app.theme);
 
     useEffect(() => {
         document.body.setAttribute("data-bs-theme", theme);
-        localStorage.setItem("theme", theme);
     }, [theme]);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function App() {
         checkAuth();
     }, [dispatch]);
 
-    const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+    const toggleTheme = () => dispatch(setTheme(theme === "light" ? "dark" : "light"));
     const router = createAppRouter(toggleTheme, theme);
 
     return (
